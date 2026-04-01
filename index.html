@@ -99,6 +99,117 @@ body {
     padding: 15px;
 }
 
+/* Contact Modal */
+.contact-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 300px;
+    width: 90%;
+}
+
+.contact-content h2 {
+    margin-bottom: 15px;
+}
+
+.contact-content p {
+    margin: 10px 0;
+}
+
+.contact-content a {
+    color: #2874f0;
+    text-decoration: none;
+}
+
+.contact-content button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: none;
+    background: #ff9f00;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Products Modal */
+.products-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.products-content {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 700px;
+    width: 95%;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.products-content h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2874f0;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.product-item {
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.product-item h3 {
+    margin-bottom: 10px;
+    color: #2874f0;
+}
+
+.product-item p {
+    font-size: 14px;
+    color: #333;
+}
+
+.products-content button {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 30px;
+    border: none;
+    background: #ff9f00;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .navbar {
@@ -152,6 +263,19 @@ body {
         padding: 15px;
         font-size: 14px;
     }
+    
+    .contact-content {
+        padding: 15px;
+    }
+    
+    .products-content {
+        padding: 20px;
+        max-width: 95%;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
 }
 </style>
 </head>
@@ -159,10 +283,11 @@ body {
 <body>
 
 <div class="navbar">
-    <div class="logo">🛒 Shree Aari Designs</div>
+    <div class="logo">🪡 Shree Aari Designs</div>
     <div class="nav-links">
         <a href="#">Home</a>
-        <a href="beads.html">Products</a>
+        <a href="#" onclick="toggleProducts()">Products</a>
+        <a href="#" onclick="openContact()" style="margin-left: 20px;">📱 Contact</a>
     </div>
 </div>
 
@@ -179,9 +304,68 @@ body {
     <a href="zardosi.html?category=zardosi" class="category">👕 Zardosi Work</a>
 </div>
 
+<!-- Products Modal -->
+<div class="products-modal" id="productsModal" onclick="closeProducts()">
+    <div class="products-content" onclick="event.stopPropagation()">
+        <h2>Our Embroidery Works</h2>
+        
+        <div class="products-grid">
+            <div class="product-item">
+                <h3>👕 Beads Work</h3>
+                <p>Beautiful beadwork embroidery featuring intricate patterns with colorful beads. Perfect for traditional and modern designs, adding sparkle and texture to garments.</p>
+            </div>
+            
+            <div class="product-item">
+                <h3>👕 Thread Work</h3>
+                <p>Exquisite thread embroidery using various stitching techniques. Our skilled artisans create detailed patterns that bring elegance and sophistication to any outfit.</p>
+            </div>
+            
+            <div class="product-item">
+                <h3>👕 Kundan Work</h3>
+                <p>Traditional Kundan jewelry work featuring gold-plated pieces with intricate designs. A royal craft that adds luxury and heritage to your attire.</p>
+            </div>
+            
+            <div class="product-item">
+                <h3>👕 Zardosi Work</h3>
+                <p>Premium Zardosi embroidery with metallic threads and sequins. Known for its richness and shine, ideal for bridal wear and special occasions.</p>
+            </div>
+        </div>
+        
+        <button onclick="closeProducts()">Close</button>
+    </div>
+</div>
+
+<!-- Contact Modal -->
+<div class="contact-modal" id="contactModal" onclick="closeContact()">
+    <div class="contact-content">
+        <h2>Contact for Orders</h2>
+        <p><a href="tel:+918123258764">📞 Call: +91 8123258764</a></p>
+        <p><a href="mailto:vinnugkenchanagoudra@gmail.com">✉️ Email: vinnugkenchanagoudra@gmail.com</a></p>
+        <button onclick="closeContact()">Close</button>
+    </div>
+</div>
+
 <div class="footer">
     © 2026 Aari Store
 </div>
+
+<script>
+    function openContact() {
+        document.getElementById("contactModal").style.display = "flex";
+    }
+
+    function closeContact() {
+        document.getElementById("contactModal").style.display = "none";
+    }
+
+    function toggleProducts() {
+        document.getElementById("productsModal").style.display = "flex";
+    }
+
+    function closeProducts() {
+        document.getElementById("productsModal").style.display = "none";
+    }
+</script>
 
 </body>
 </html>
